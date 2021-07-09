@@ -50,6 +50,7 @@ public class EmployeeRestController {
 		
 	}
 	
+	
 	// add mapping for GET /customers/{customerId}
 	@GetMapping("/employees/{employeeId}")
 	public Employee getEmployee(@PathVariable int employeeId) {
@@ -65,6 +66,26 @@ public class EmployeeRestController {
 				}
 				
 				return employee;
+	}
+	
+	
+	// add mapping for POST /customers  - add new customer
+	//WITH ANNOTATION @RequestBody, WE BINDING THAT OBJECT FROM .JSON TO THIS Employee theEmployee OBJECT
+	//IN POSTMAN REST CLIENT IN REQUEST BODY WE PASSING .JSON OBJECT TO BE SAVED TO DATABASE.
+	//IN THE BACKGROUND JACKSON CALLING SETTER METHODS TO SET OUR EMPLOYEE OBJECT TO DATA FROM .JSON.
+	//WHEN WE PASS AN OBJECT IN REQUEST BODY WE DON'T PASS ID,BECAUSE ID IS AUTOMATICALLY GENERATED FROM THE DATABASE.
+	//BECAUSE OF THAT, JUST IN CASE WE SET ID TO 0.IF USER PASS ID BY ACCIDENT 
+	@PostMapping("/employees")
+	public Employee addEmployee(@RequestBody Employee theEmployee) {
+		
+		// also just in case the pass an id in JSON ... set id to 0
+		// this is force a save of new item ... instead of update
+		theEmployee.setId(0);
+		
+		//WE ARE USING THIS SAME METHOD FOR SAVE AND FOR UPDATE
+		employeeService.save(theEmployee);
+		
+		return theEmployee;
 	}
 		
 }
