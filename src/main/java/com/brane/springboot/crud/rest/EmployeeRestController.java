@@ -49,5 +49,22 @@ public class EmployeeRestController {
 		return employeeService.findAll();
 		
 	}
+	
+	// add mapping for GET /customers/{customerId}
+	@GetMapping("/employees/{employeeId}")
+	public Employee getEmployee(@PathVariable int employeeId) {
+		
+		Employee employee = employeeService.findById(employeeId);
+		
+				//IF WE DON'T HAVE EMPLOYEE OBJECT IN DATABASE WITH THIS ID (employeeId) THEN WE WILL THROW
+				//RuntimeException WITH MESSAGE,else return our employee object from db.
+				//JACKSON FOR NULL VALUE RETURNS EMPTY BODY-BLANK PAGE.
+				if (employee == null) {
+
+					throw new RuntimeException("There is no employee with the ID - " + employeeId);
+				}
+				
+				return employee;
+	}
 		
 }
