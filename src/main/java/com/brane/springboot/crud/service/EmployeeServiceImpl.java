@@ -13,8 +13,8 @@ import com.brane.springboot.crud.entity.Employee;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-			///private field employeeDAO, so we can do constructor dependency injection 
-			//to delegate calls from SERVICE LAYER TO DAO LAYER
+			//private field employeeDAO, so we can do constructor dependency injection 
+			//to delegate calls from SERVICE LAYER TO THE DAO LAYER
 			private EmployeeDAO employeeDAO;
 			
 			//constructor injection
@@ -30,7 +30,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		@Transactional
 		public List<Employee> findAll() {
 			
-			//DELEGATE CALLS TO DAO LAYER
+			//DELEGATE CALLS TO THE DAO LAYER
 			return employeeDAO.findAll();
 		}
 
