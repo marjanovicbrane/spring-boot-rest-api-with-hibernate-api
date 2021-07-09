@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.brane.springboot.crud.entity.Employee;
 
-//we created interface form employee DAO (Data Access Object) to access data from the database
+//we created interface for employee DAO (Data Access Object) to access data from the database
 //this we will use to do all CRUD methods on database
 public interface EmployeeDAO {
 
