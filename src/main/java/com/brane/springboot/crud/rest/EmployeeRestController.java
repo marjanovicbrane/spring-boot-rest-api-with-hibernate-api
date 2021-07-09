@@ -87,5 +87,17 @@ public class EmployeeRestController {
 		
 		return theEmployee;
 	}
+	
+	
+	// add mapping for PUT /customers - update existing customer
+	//WHEN WE PASS AN OBJECT IN REQUEST BODY WE ALSO PASSING ID THIS TIME, BECAUSE WE NEED TO DO AN UPDATE
+	@PutMapping("/employees")
+	public Employee updateEmployee(@RequestBody Employee theEmployee) {
+		
+		//WE ARE USING THIS SAME METHOD FOR SAVE AND FOR UPDATE
+		employeeService.save(theEmployee);
+		
+		return theEmployee;
+	}
 		
 }
