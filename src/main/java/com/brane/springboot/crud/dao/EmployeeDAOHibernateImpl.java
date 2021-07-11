@@ -81,7 +81,7 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO {
 			Query theQuery=currentSession.createQuery("delete from Employee where id=:employeeId");
 
 			//and then we need to set the parameter to primary key theId
-			theQuery.setParameter("employeeId", theId);//treba vidjeti da lije ovo parametra iz htmla
+			theQuery.setParameter("employeeId", theId);
 
 			//execute query
 			theQuery.executeUpdate();
