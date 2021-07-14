@@ -51,7 +51,7 @@ public class EmployeeRestController {
 	}
 	
 	
-	// add mapping for GET /customers/{customerId}
+	// add mapping for GET /employees/{employeeId}
 	@GetMapping("/employees/{employeeId}")
 	public Employee getEmployee(@PathVariable int employeeId) {
 		
@@ -69,7 +69,7 @@ public class EmployeeRestController {
 	}
 	
 	
-	// add mapping for POST /customers  - add new customer
+	// add mapping for POST /employees  - add new customer
 	//WITH ANNOTATION @RequestBody, WE BINDING THAT OBJECT FROM .JSON TO THIS Employee theEmployee OBJECT
 	//IN POSTMAN REST CLIENT IN REQUEST BODY WE PASSING .JSON OBJECT TO BE SAVED TO DATABASE.
 	//IN THE BACKGROUND JACKSON CALLING SETTER METHODS TO SET OUR EMPLOYEE OBJECT TO DATA FROM .JSON.
@@ -89,7 +89,7 @@ public class EmployeeRestController {
 	}
 	
 	
-	// add mapping for PUT /customers - update existing customer
+	// add mapping for PUT /employees - update existing customer
 	//WHEN WE PASS AN OBJECT IN REQUEST BODY WE ALSO PASSING ID THIS TIME, BECAUSE WE NEED TO DO AN UPDATE
 	@PutMapping("/employees")
 	public Employee updateEmployee(@RequestBody Employee theEmployee) {
@@ -101,11 +101,11 @@ public class EmployeeRestController {
 	}
 	
 	
-	// add mapping for DELETE /customers/{customerId} - delete customer
+	// add mapping for DELETE /employees/{employeeId} - delete customer
 	@DeleteMapping("/employees/{employeeId}")
 	public String deleteEmployee(@PathVariable int employeeId) {
 		
-		//get customer from database with id employeeId
+		//get employee from database with id employeeId
 		Employee tempEmployee = employeeService.findById(employeeId);
 		
 		//ID employee with that id doesn't exist, throw runtime exception
